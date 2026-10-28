@@ -1,35 +1,58 @@
-# React + TypeScript + Vite
+# Expenses Manager UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React app for managing expenses.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- [React](https://react.dev) + TypeScript
+- [Vite](https://vite.dev) (with React Compiler)
+- [MUI](https://mui.com/material-ui/) (Material UI)
+- [Oxlint](https://oxc.rs) for linting
 
-## React Compiler
+## Requirements
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Node.js `20.19+` or `22.12+`
+- npm (comes with Node.js)
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Getting started
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Then open the URL shown in the terminal (by default http://localhost:5173).
+
+## Commands
+
+| Command           | Description                                                        |
+| ----------------- | ------------------------------------------------------------------ |
+| `npm install`     | Install dependencies (run once after cloning).                     |
+| `npm run dev`     | Start the dev server with hot reload.                              |
+| `npm run build`   | Type-check with TypeScript and build for production into `dist/`. |
+| `npm run preview` | Serve the production build from `dist/` locally.                   |
+| `npm run lint`    | Check the code with Oxlint.                                        |
+
+## Project structure
+
+```
+src/
+├── app/          # app-wide setup (e.g. MUI theme in theme.ts)
+├── components/   # reusable UI components
+├── contexts/     # React context providers
+├── hooks/        # custom React hooks
+├── pages/        # page-level components (whole screens)
+├── utils/        # helper functions
+├── App.tsx       # root component
+└── main.tsx      # entry point, renders App
+```
+
+## Import alias
+
+`@/` points to `src/`, so you can import without long relative paths:
+
+```ts
+import { theme } from '@/app/theme'
+```
+
+The alias is defined in `tsconfig.app.json` (`paths`), and Vite reads it via `resolve.tsconfigPaths` in `vite.config.ts`.
