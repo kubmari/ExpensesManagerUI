@@ -8,7 +8,7 @@ void i18n.use(initReactI18next).init({
     en: { common: en },
     pl: { common: pl },
   },
-  lng: "pl",
+  lng: localStorage.getItem("lang") || "pl",
   fallbackLng: "en",
   ns: ["common"],
   defaultNS: "common",

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 class Expense {
     id: string;
@@ -89,7 +90,8 @@ function ExpensesPage() {
             <h2>{t("expensesAddForm")}</h2>
             <ExpenseForm onAddExpense={(expense) => setExpenses([...expenses, expense])} />
             <h2>{t("expensesList")}</h2>
-            <ul>
+            {expenses.length === 0 ? (<p>{t("listEmpty")}</p>) : (
+                <ul>
                 {expenses.map((expense) => (
                     <li key={expense.id}>
                         <span style={{ marginRight: "10px" }}>{t("expenseTitle")}: {expense.title}</span>
@@ -98,6 +100,8 @@ function ExpensesPage() {
                     </li>
                 ))}
             </ul>
+            )}         
+            <LanguageSwitcher />
         </div>
     )
 }
