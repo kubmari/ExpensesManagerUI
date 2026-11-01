@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 class Expense {
     id: string;
@@ -17,6 +18,7 @@ class Expense {
 
 function ExpenseForm({ onAddExpense }: { onAddExpense: (expense: Expense) => void }) {
     "use no memo";
+    const { t } = useTranslation();
     const onSubmit = (data: { title: string; amount: number; category: string }) => {
         const newExpense = new Expense(
             crypto.randomUUID(),
@@ -40,49 +42,59 @@ function ExpenseForm({ onAddExpense }: { onAddExpense: (expense: Expense) => voi
             <p>
                 <input
                     {...register("title", {
-                        required: "Title is required",
+                        required:  t("titleRequired") ,
                         minLength: {
                             value: 2,
-                            message: "Title must be at least 2 characters long"
+                            message:  t("titleLength") 
                         }
                     })}
-                    placeholder="Title" />
+                    placeholder={t("expenseTitle")} />
                 {errors.title && <span style={{ color: "red" }}>{String(errors.title?.message)}</span>}
             </p>
             <p>
                 <input type="number"
                     {...register("amount", {
-                        required: "Amount is required",
+                        required: t("amountRequired"),
                         valueAsNumber: true,
-                        validate: (value) => value > 0 || "Amount must be greater than 0"
-                    })} placeholder="Amount" />
+                        validate: (value) => value > 0 || t("amountInvalid")
+                    })} placeholder={t("expenseAmount")} />
                 {errors.amount && <span style={{ color: "red" }}>{String(errors.amount?.message)}</span>}
             </p>
             <p>
                 <input {...register("category", {
-                    required: "Category is required"
-                })} placeholder="Category" />
+                    required: t("categoryRequired")
+                })} placeholder={t("expenseCategory")} />
                 {errors.category && <span style={{ color: "red" }} >{String(errors.category?.message)}</span>}
             </p>
-            <button type="submit">Add Expense</button>
+            <button type="submit">{t("addExpense")}</button>
         </form>
     )
 }
 
+function ExpensePageHeader() {
+    const { t } = useTranslation();
+    return (
+        <header>
+            <h1>{t("appTitle")}</h1>
+        </header>
+    )
+}
+
 function ExpensesPage() {
+    const { t } = useTranslation();
     const [expenses, setExpenses] = useState<Expense[]>([]);
     return (
         <div>
-            <h1>Expenses Page</h1>
-            <h2>Expense add form:</h2>
+            <ExpensePageHeader />
+            <h2>{t("expensesAddForm")}</h2>
             <ExpenseForm onAddExpense={(expense) => setExpenses([...expenses, expense])} />
-            <h2>Expenses list:</h2>
+            <h2>{t("expensesList")}</h2>
             <ul>
                 {expenses.map((expense) => (
                     <li key={expense.id}>
-                        <span style={{ marginRight: "10px" }}>Title: {expense.title}</span>
-                        <span style={{ marginRight: "10px" }}>Amount: {expense.amount}</span>
-                        <span style={{ marginRight: "10px" }}>Category: {expense.category}</span>
+                        <span style={{ marginRight: "10px" }}>{t("expenseTitle")}: {expense.title}</span>
+                        <span style={{ marginRight: "10px" }}>{t("expenseAmount")}: {expense.amount}</span>
+                        <span style={{ marginRight: "10px" }}>{t("expenseCategory")}: {expense.category}</span>
                     </li>
                 ))}
             </ul>

@@ -1,0 +1,15 @@
+{
+  "appTitle": "Expense Manager",
+  "addExpense": "Add expense",
+  "expenseTitle": "Expense title",
+  "expenseAmount": "Expense amount", 
+  "expenseCategory": "Expense category",
+  "listEmpty": "No expenses to display",
+  "titleRequired": "Title is required",
+  "amountRequired": "Amount is required",
+  "amountInvalid": "Amount must be greater than 0",
+  "categoryRequired": "Category is required",
+  "titleLength": "Title must be at least 2 characters long",
+  "expensesList": "Expenses List",
+  "expensesAddForm": "Expenses Add Form"
+}

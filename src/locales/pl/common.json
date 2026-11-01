@@ -1,0 +1,15 @@
+{
+  "appTitle": "Manager wydatków",
+  "addExpense": "Dodaj wydatek",
+  "expenseTitle": "Tytuł wydatku",
+  "expenseAmount": "Kwota wydatku",
+  "expenseCategory": "Kategoria wydatku",
+  "listEmpty": "Brak wydatków do wyświetlenia",
+  "titleRequired": "Tytuł jest wymagany",
+  "amountRequired": "Kwota jest wymagana",
+  "amountInvalid": "Kwota musi być większa niż 0",
+  "categoryRequired": "Kategoria jest wymagana",
+  "titleLength": "Tytuł musi mieć co najmniej 2 znaki",
+  "expensesList": "Lista wydatków",
+  "expensesAddForm": "Formularz dodawania wydatków"
+}
