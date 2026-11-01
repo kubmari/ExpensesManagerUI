@@ -1,8 +1,9 @@
+import ExpensesPage from '@/pages/ExpensesPage'
 function App() {
 
   return (
     <>
-      <h1>Hello World</h1>
+      <ExpensesPage />
     </>
   )
 }
