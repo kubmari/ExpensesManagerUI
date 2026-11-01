@@ -16,6 +16,7 @@ class Expense {
 }
 
 function ExpenseForm({ onAddExpense }: { onAddExpense: (expense: Expense) => void }) {
+    "use no memo";
     const onSubmit = (data: { title: string; amount: number; category: string }) => {
         const newExpense = new Expense(
             crypto.randomUUID(),
