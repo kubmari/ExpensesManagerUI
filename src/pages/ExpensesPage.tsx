@@ -40,7 +40,7 @@ function ExpenseForm({ onAddExpense }: { onAddExpense: (expense: Expense) => voi
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <p>
+            <div>
                 <input
                     {...register("title", {
                         required:  t("titleRequired") ,
@@ -50,23 +50,23 @@ function ExpenseForm({ onAddExpense }: { onAddExpense: (expense: Expense) => voi
                         }
                     })}
                     placeholder={t("expenseTitle")} />
-                {errors.title && <span style={{ color: "red" }}>{String(errors.title?.message)}</span>}
-            </p>
-            <p>
+                {errors.title && <div style={{ color: "red" }}>{String(errors.title?.message)}</div>}
+            </div>
+            <div>
                 <input type="number"
                     {...register("amount", {
                         required: t("amountRequired"),
                         valueAsNumber: true,
                         validate: (value) => value > 0 || t("amountInvalid")
                     })} placeholder={t("expenseAmount")} />
-                {errors.amount && <span style={{ color: "red" }}>{String(errors.amount?.message)}</span>}
-            </p>
-            <p>
+                {errors.amount && <div style={{ color: "red" }}>{String(errors.amount?.message)}</div>}
+            </div>
+            <div>
                 <input {...register("category", {
                     required: t("categoryRequired")
                 })} placeholder={t("expenseCategory")} />
-                {errors.category && <span style={{ color: "red" }} >{String(errors.category?.message)}</span>}
-            </p>
+                {errors.category && <div style={{ color: "red" }}>{String(errors.category?.message)}</div>}
+            </div>
             <button type="submit">{t("addExpense")}</button>
         </form>
     )
