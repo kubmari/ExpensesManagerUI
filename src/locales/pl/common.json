@@ -11,5 +11,8 @@
   "categoryRequired": "Kategoria jest wymagana",
   "titleLength": "Tytuł musi mieć co najmniej 2 znaki",
   "expensesList": "Lista wydatków",
-  "expensesAddForm": "Formularz dodawania wydatków"
+  "expensesAddForm": "Formularz dodawania wydatków",
+  "expenses": "Wydatki",
+  "summary": "Podsumowanie",
+  "dashboard": "Panel główny"
 }
