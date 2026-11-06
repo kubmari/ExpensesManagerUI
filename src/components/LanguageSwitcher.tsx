@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Button, ButtonGroup } from "@mui/material";
 
 export function LanguageSwitcher() {
   const { i18n } = useTranslation();
@@ -9,9 +10,9 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div>
-      <button onClick={() => changeLanguage("pl")}>PL</button>
-      <button onClick={() => changeLanguage("en")}>EN</button>
-    </div>
+    <ButtonGroup size="small" sx={{ alignSelf: "flex-start" }}>
+      <Button onClick={() => changeLanguage("pl")}>PL</Button>
+      <Button onClick={() => changeLanguage("en")}>EN</Button>
+    </ButtonGroup>
   );
 }
